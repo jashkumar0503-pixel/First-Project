@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BOOK READING ACTIVITY FOR PCE</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f1f3f6;
+            color: #222;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+        }
+
+        /* TITLE */
+
+        .title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .title h1 {
+            margin: 0;
+            font-size: 27px;
+            text-transform: uppercase;
+        }
+
+        .title p {
+            margin-top: 8px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        /* FORM */
+
+        .form-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #bbb;
+            border-radius: 7px;
+            font-size: 16px;
+            background: white;
+        }
+
+        input[type="text"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #333;
+        }
+
+        /* BATCH */
+
+        .batch-box {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            min-height: 46px;
+        }
+
+        .batch-option {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            font-weight: normal;
+        }
+
+        .batch-option input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        /* BUTTONS */
+
+        .button-area {
+            margin-top: 18px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            border-radius: 7px;
+            padding: 11px 18px;
+            font-size: 15px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .add-btn {
+            background: #222;
+            color: white;
+        }
+
+        .add-btn:hover {
+            background: #444;
+        }
+
+        .update-btn {
+            background: #1769aa;
+            color: white;
+        }
+
+        .cancel-btn {
+            background: #777;
+            color: white;
+        }
+
+        .edit-btn {
+            background: #1769aa;
+            color: white;
+            padding: 7px 11px;
+            margin-right: 4px;
+        }
+
+        .delete-btn {
+            background: #d32f2f;
+            color: white;
+            padding: 7px 11px;
+        }
+
+        /* SEARCH */
+
+        .search-box {
+            margin-top: 22px;
+            margin-bottom: 15px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 13px;
+            font-size: 16px;
+            border: 1px solid #bbb;
+            border-radius: 7px;
+        }
+
+        /* TABLE */
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin-top: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 850px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 11px;
+            text-align: center;
+        }
+
+        th {
+            background: #222;
+            color: white;
+            white-space: nowrap;
+        }
+
+        td:nth-child(2),
+        td:nth-child(5) {
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+
+        tr:hover {
+            background: #eeeeee;
+        }
+
+        /* COUNTER */
+
+        .record-count {
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        /* EDIT MODE */
+
+        .editing {
+            background: #fff4cc !important;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .title h1 {
+                font-size: 21px;
+            }
+
+            .title p {
+                font-size: 14px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .button-area {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .batch-box {
+                padding: 5px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- TITLE -->
+
+    <div class="title">
+
+        <h1>
+            BOOK READING ACTIVITY FOR PCE
+        </h1>
+
+        <p>
+            (BE03000051)
+        </p>
+
+    </div>
+
+
+    <!-- FORM -->
+
+    <div class="form-box">
+
+        <div class="form-grid">
+
+            <!-- STUDENT NAME -->
+
+            <div class="form-group">
+
+                <label for="studentName">
+                    Student Name
+                </label>
+
+                <input
+                    type="text"
+                    id="studentName"
+                    placeholder="Enter student name"
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <!-- ENROLLMENT NUMBER -->
+
+            <div class="form-group">
+
+                <label for="enrollment">
+                    Enrollment Number
+                </label>
+
+                <input
+                    type="text"
+                    id="enrollment"
+                    placeholder="Enter enrollment number"
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <!-- BATCH -->
+
+            <div class="form-group">
+
+                <label>
+                    Batch
+                </label>
+
+                <div class="batch-box">
+
+                    <label class="batch-option">
+
+                        <input
+                            type="radio"
+                            name="batch"
+                            value="A"
+                        >
+
+                        <span>Batch A</span>
+
+                    </label>
+
+
+                    <label class="batch-option">
+
+                        <input
+                            type="radio"
+                            name="batch"
+                            value="B"
+                        >
+
+                        <span>Batch B</span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOOK -->
+
+            <div class="form-group">
+
+                <label for="book">
+                    Book Name
+                </label>
+
+                <select id="book">
+
+                    <option value="">
+                        -- Select Book --
+                    </option>
+
+                    <option value="You Can Win by Shiv Khera">
+                        1. You Can Win — Shiv Khera
+                    </option>
+
+                    <option value="How to Win Friends and Influence People by Dale Carnegie">
+                        2. How to Win Friends and Influence People — Dale Carnegie
+                    </option>
+
+                    <option value="Getting Things Done: The Art of Stress-Free Productivity by David Allen">
+                        3. Getting Things Done: The Art of Stress-Free Productivity — David Allen
+                    </option>
+
+                    <option value="Quiet: The Power of Introvert in the World They Can't Stop Talking by Susan Cain">
+                        4. Quiet: The Power of Introvert in the World They Can't Stop Talking — Susan Cain
+                    </option>
+
+                    <option value="The Alchemist by Paulo Coelho">
+                        5. The Alchemist — Paulo Coelho
+                    </option>
+
+                    <option value="The 7 Habits of Highly Effective People by Stephen Covey">
+                        6. The 7 Habits of Highly Effective People — Stephen Covey
+                    </option>
+
+                    <option value="What to Say When You Talk to Yourself by Dr. Shad Helmstetter">
+                        7. What to Say When You Talk to Yourself — Dr. Shad Helmstetter
+                    </option>
+
+                    <option value="The Big Leap by Gay Hendricks">
+                        8. The Big Leap — Gay Hendricks
+                    </option>
+
+                    <option value="Thinking, Fast and Slow by Daniel Kahneman">
+                        9. Thinking, Fast and Slow — Daniel Kahneman
+                    </option>
+
+                    <option value="The Art of Thinking Clearly by Ralf Dobelli">
+                        10. The Art of Thinking Clearly — Ralf Dobelli
+                    </option>
+
+                    <option value="Upside-Down King by Sudha Murthy">
+                        11. Upside-Down King — Sudha Murthy
+                    </option>
+
+                    <option value="Born to Be Happy by Pramod Batra">
+                        12. Born to Be Happy — Pramod Batra
+                    </option>
+
+                    <option value="Ikigai: The Japanese Secret to a Long and Happy Life by Héctor García and Francesc Miralles">
+                        13. Ikigai: The Japanese Secret to a Long and Happy Life — Héctor García & Francesc Miralles
+                    </option>
+
+                    <option value="Poor Little Rich Slum by Rashmi Bansal">
+                        14. Poor Little Rich Slum — Rashmi Bansal
+                    </option>
+
+                    <option value="Most and More by Mahatria Ra">
+                        15. Most and More — Mahatria Ra
+                    </option>
+
+                    <option value="The Old Man and the Sea by Ernest Hemingway">
+                        16. The Old Man and the Sea — Ernest Hemingway
+                    </option>
+
+                    <option value="Rich Dad Poor Dad by Robert Kiyosaki">
+                        17. Rich Dad Poor Dad — Robert Kiyosaki
+                    </option>
+
+                    <option value="The Monk Who Sold His Ferrari by Robin Sharma">
+                        18. The Monk Who Sold His Ferrari — Robin Sharma
+                    </option>
+
+                    <option value="Who Moved My Cheese? by Dr. Spencer Johnson">
+                        19. Who Moved My Cheese? — Dr. Spencer Johnson
+                    </option>
+
+                    <option value="The Business of the 21st Century by Robert Kiyosaki">
+                        20. The Business of the 21st Century — Robert Kiyosaki
+                    </option>
+
+                    <option value="My Experiments with Truth by Mahatma Gandhi">
+                        21. My Experiments with Truth — Mahatma Gandhi
+                    </option>
+
+                    <option value="Five Point Someone by Chetan Bhagat">
+                        22. Five Point Someone — Chetan Bhagat
+                    </option>
+
+                    <option value="The Secret by Rhonda Byrne">
+                        23. The Secret — Rhonda Byrne
+                    </option>
+
+                    <option value="The Power of Positive Thinking by Norman Vincent Peale">
+                        24. The Power of Positive Thinking — Norman Vincent Peale
+                    </option>
+
+                    <option value="The Power of Your Subconscious Mind by Joseph Murphy">
+                        25. The Power of Your Subconscious Mind — Joseph Murphy
+                    </option>
+
+                    <option value="The 5 AM Club by Robin Sharma">
+                        26. The 5 AM Club — Robin Sharma
+                    </option>
+
+                    <option value="Who Will Cry When You Die? by Robin Sharma">
+                        27. Who Will Cry When You Die? — Robin Sharma
+                    </option>
+
+                    <option value="Discover Your Destiny by Robin Sharma">
+                        28. Discover Your Destiny — Robin Sharma
+                    </option>
+
+                    <option value="Wings of Fire by A.P.J. Abdul Kalam">
+                        29. Wings of Fire — A.P.J. Abdul Kalam
+                    </option>
+
+                    <option value="I Have a Dream by Rashmi Bansal">
+                        30. I Have a Dream — Rashmi Bansal
+                    </option>
+
+                    <option value="The 5 Steps to Success by Yandamoori Veerendranath">
+                        31. The 5 Steps to Success — Yandamoori Veerendranath
+                    </option>
+
+                    <option value="You Are Born to Blossom by A.P.J. Abdul Kalam">
+                        32. You Are Born to Blossom — A.P.J. Abdul Kalam
+                    </option>
+
+                    <option value="Tiya: A Parrot's Journey Home by Samarpan">
+                        33. Tiya: A Parrot's Journey Home — Samarpan
+                    </option>
+
+                    <option value="The God of Small Things by Arundhati Roy">
+                        34. The God of Small Things — Arundhati Roy
+                    </option>
+
+                    <option value="How to Develop a 'Never Give Up' Attitude by Dr. Hardik Joshi">
+                        35. How to Develop a 'Never Give Up' Attitude — Dr. Hardik Joshi
+                    </option>
+
+                    <option value="Three Thousand Stitches: Ordinary People, Extraordinary Lives by Sudha Murthy">
+                        36. Three Thousand Stitches: Ordinary People, Extraordinary Lives — Sudha Murthy
+                    </option>
+
+                    <option value="Chanakya in Daily Life by Radhakrishnan Pillai">
+                        37. Chanakya in Daily Life — Radhakrishnan Pillai
+                    </option>
+
+                    <option value="Siddhartha by Hermann Hesse">
+                        38. Siddhartha — Hermann Hesse
+                    </option>
+
+                    <option value="Kiss That Frog by Brian Tracy">
+                        39. Kiss That Frog — Brian Tracy
+                    </option>
+
+                    <option value="Eat That Frog!: 21 Great Ways to Stop Procrastinating and Get More Done in Less Time by Brian Tracy">
+                        40. Eat That Frog!: 21 Great Ways to Stop Procrastinating and Get More Done in Less Time — Brian Tracy
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- BUTTONS -->
+
+        <div class="button-area">
+
+            <button
+                class="add-btn"
+                id="saveButton"
+                onclick="saveStudent()"
+            >
+                ➕ Add Student
+            </button>
+
+            <button
+                class="cancel-btn"
+                id="cancelButton"
+                onclick="cancelEdit()"
+                style="display:none;"
+            >
+                ✖ Cancel Edit
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="search"
+            placeholder="🔍 Search by name, enrollment number or book..."
+            oninput="displayStudents()"
+        >
+
+    </div>
+
+
+    <!-- RECORD COUNT -->
+
+    <div class="record-count" id="recordCount">
+        Total Students: 0
+    </div>
+
+
+    <!-- TABLE -->
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>No.</th>
+                    <th>Student Name</th>
+                    <th>Enrollment Number</th>
+                    <th>Batch</th>
+                    <th>Book Name</th>
+                    <th>Action</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="studentTable"></tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    /*
+     * ==========================================
+     * STUDENT BOOK RECORD SYSTEM
+     * ==========================================
+     */
+
+
+    // Load existing data from browser
+    let students =
+        JSON.parse(localStorage.getItem("pceBookStudents")) || [];
+
+
+    // Variable used while editing
+    let editingId = null;
+
+
+    /*
+     * SAVE / ADD STUDENT
+     */
+
+    function saveStudent() {
+
+        const name =
+            document.getElementById("studentName")
+            .value
+            .trim();
+
+        const enrollment =
+            document.getElementById("enrollment")
+            .value
+            .trim();
+
+        const book =
+            document.getElementById("book")
+            .value;
+
+        const batchRadio =
+            document.querySelector(
+                'input[name="batch"]:checked'
+            );
+
+        const batch =
+            batchRadio ? batchRadio.value : "";
+
+
+        // Validation
+
+        if (name === "") {
+            alert("Please enter student name.");
+            return;
+        }
+
+        if (enrollment === "") {
+            alert("Please enter enrollment number.");
+            return;
+        }
+
+        if (batch === "") {
+            alert("Please select Batch A or Batch B.");
+            return;
+        }
+
+        if (book === "") {
+            alert("Please select a book.");
+            return;
+        }
+
+
+        /*
+         * CHECK DUPLICATE ENROLLMENT
+         *
+         * Enrollment number should identify
+         * one student.
+         */
+
+        const duplicate =
+            students.find(function(student) {
+
+                return (
+                    student.enrollment.toLowerCase() ===
+                    enrollment.toLowerCase() &&
+                    student.id !== editingId
+                );
+
+            });
+
+
+        if (duplicate) {
+
+            alert(
+                "This enrollment number already exists."
+            );
+
+            return;
+        }
+
+
+        /*
+         * EDIT EXISTING STUDENT
+         */
+
+        if (editingId !== null) {
+
+            const student =
+                students.find(
+                    s => s.id === editingId
+                );
+
+
+            if (student) {
+
+                student.name = name;
+                student.enrollment = enrollment;
+                student.batch = batch;
+                student.book = book;
+
+            }
+
+            editingId = null;
+
+            document.getElementById(
+                "saveButton"
+            ).innerHTML = "➕ Add Student";
+
+            document.getElementById(
+                "saveButton"
+            ).className = "add-btn";
+
+            document.getElementById(
+                "cancelButton"
+            ).style.display = "none";
+
+        }
+
+
+        /*
+         * ADD NEW STUDENT
+         */
+
+        else {
+
+            const newStudent = {
+
+                id:
+                    Date.now().toString() +
+                    Math.random()
+                    .toString(36)
+                    .substring(2),
+
+                name: name,
+
+                enrollment: enrollment,
+
+                batch: batch,
+
+                book: book
+
+            };
+
+
+            students.push(newStudent);
+
+        }
+
+
+        // Save data
+        saveData();
+
+
+        // Clear form
+        clearForm();
+
+
+        // Display sorted records
+        displayStudents();
+
+    }
+
+
+    /*
+     * SAVE DATA TO LOCAL STORAGE
+     */
+
+    function saveData() {
+
+        localStorage.setItem(
+            "pceBookStudents",
+            JSON.strin
