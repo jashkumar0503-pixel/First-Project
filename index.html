@@ -7,146 +7,152 @@
 <title>BOOK READING ACTIVITY FOR PCE</title>
 
 <style>
-body {
-    font-family: Arial, sans-serif;
-    background: #f2f2f2;
-    margin: 0;
-    padding: 15px;
-}
+    * {
+        box-sizing: border-box;
+    }
 
-.container {
-    max-width: 1100px;
-    margin: auto;
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-}
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background: #f4f6f8;
+    }
 
-h1 {
-    text-align: center;
-    font-size: 25px;
-}
-
-.subtitle {
-    text-align: center;
-    font-weight: bold;
-}
-
-.form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-top: 25px;
-}
-
-input[type="text"],
-select {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    border: 1px solid #aaa;
-    border-radius: 6px;
-}
-
-.batch {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 10px 0;
-}
-
-.batch label {
-    cursor: pointer;
-}
-
-button {
-    padding: 12px 18px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.add {
-    background: #222;
-    color: white;
-}
-
-.edit {
-    background: #1976d2;
-    color: white;
-}
-
-.delete {
-    background: #d32f2f;
-    color: white;
-}
-
-.cancel {
-    background: #777;
-    color: white;
-}
-
-.search {
-    width: 100%;
-    padding: 12px;
-    margin: 20px 0;
-    font-size: 16px;
-    border: 1px solid #aaa;
-    border-radius: 6px;
-}
-
-.table-box {
-    overflow-x: auto;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 800px;
-}
-
-th,
-td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-}
-
-th {
-    background: #222;
-    color: white;
-}
-
-td:nth-child(2),
-td:nth-child(5) {
-    text-align: left;
-}
-
-.message {
-    display: none;
-    padding: 10px;
-    margin-top: 15px;
-    background: #dff0d8;
-    color: #246b24;
-    border-radius: 6px;
-}
-
-.actions {
-    display: flex;
-    gap: 5px;
-    justify-content: center;
-}
-
-@media (max-width: 700px) {
-    .form {
-        grid-template-columns: 1fr;
+    .container {
+        max-width: 1100px;
+        margin: auto;
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.12);
     }
 
     h1 {
-        font-size: 20px;
+        text-align: center;
+        font-size: 26px;
+        margin-bottom: 25px;
     }
-}
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 6px;
+    }
+
+    input,
+    select {
+        width: 100%;
+        padding: 11px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 15px;
+    }
+
+    .batch-options {
+        display: flex;
+        gap: 25px;
+        align-items: center;
+    }
+
+    .batch-options label {
+        font-weight: normal;
+        margin: 0;
+    }
+
+    .batch-options input {
+        width: auto;
+        margin-right: 5px;
+    }
+
+    button {
+        padding: 10px 18px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 15px;
+        margin-right: 8px;
+        margin-top: 5px;
+    }
+
+    .save-btn {
+        background: #198754;
+        color: white;
+    }
+
+    .clear-btn {
+        background: #6c757d;
+        color: white;
+    }
+
+    .edit-btn {
+        background: #ffc107;
+        color: black;
+    }
+
+    .delete-btn {
+        background: #dc3545;
+        color: white;
+    }
+
+    .search {
+        margin: 25px 0 15px;
+    }
+
+    .message {
+        margin-top: 12px;
+        font-weight: bold;
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        min-width: 850px;
+    }
+
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background: #343a40;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background: #f8f9fa;
+    }
+
+    .empty {
+        text-align: center;
+        color: #777;
+        padding: 20px;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            padding: 10px;
+        }
+
+        .container {
+            padding: 15px;
+        }
+
+        h1 {
+            font-size: 20px;
+        }
+    }
 </style>
 </head>
 
@@ -154,417 +160,268 @@ td:nth-child(5) {
 
 <div class="container">
 
-<h1>BOOK READING ACTIVITY FOR PCE</h1>
+    <h1>BOOK READING ACTIVITY FOR PCE (BE03000051)</h1>
 
-<div class="subtitle">
-    (BE03000051)
-</div>
+    <form id="studentForm">
 
-
-<!-- FORM -->
-
-<div class="form">
-
-    <input
-        type="text"
-        id="name"
-        placeholder="Student Name"
-    >
-
-    <input
-        type="text"
-        id="enrollment"
-        placeholder="Enrollment Number"
-    >
-
-
-    <!-- BATCH RADIO BUTTONS -->
-
-    <div class="batch">
-
-        <b>Batch:</b>
-
-        <label>
+        <div class="form-group">
+            <label for="studentName">Student Name</label>
             <input
-                type="radio"
-                name="batch"
-                value="A"
+                type="text"
+                id="studentName"
+                placeholder="Enter student name"
+                required
             >
-            A
-        </label>
+        </div>
 
-        <label>
+        <div class="form-group">
+            <label for="enrollment">Enrollment Number</label>
             <input
-                type="radio"
-                name="batch"
-                value="B"
+                type="text"
+                id="enrollment"
+                placeholder="Enter enrollment number"
+                required
             >
-            B
-        </label>
+        </div>
+
+        <div class="form-group">
+            <label>Student Batch</label>
+
+            <div class="batch-options">
+                <label>
+                    <input type="radio" name="batch" value="A">
+                    Batch A
+                </label>
+
+                <label>
+                    <input type="radio" name="batch" value="B">
+                    Batch B
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="bookName">Book Name</label>
+
+            <select id="bookName" required>
+                <option value="">-- Select Book --</option>
+
+                <option>You Can Win — Shiv Khera</option>
+                <option>How to Win Friends and Influence People — Dale Carnegie</option>
+                <option>Getting Things Done: The Art of Stress Free Productivity — David Allen</option>
+                <option>Quiet: The Power of Introvert in the World They Can't Stop Talking — Susan Cain</option>
+                <option>The Alchemist — Paulo Coelho</option>
+                <option>The 7 Habits of Highly Effective People — Stephen Covey</option>
+                <option>What to Say When You Talk to Yourself — Dr. Shad Helmstetter</option>
+                <option>The Big Leap — Gay Hendricks</option>
+                <option>Thinking Fast and Slow — Daniel Kahneman</option>
+                <option>The Art of Thinking Clearly — Ralf Dobelli</option>
+                <option>Upside-Down King — Sudha Murthy</option>
+                <option>Born to Be Happy — Pramod Batra</option>
+                <option>Ikigai: The Japanese Secret to a Long and Happy Life — Héctor García & Francesc Miralles</option>
+                <option>Poor Little Rich Slum — Rashmi Bansal</option>
+                <option>Most and More — Mahatria Ra</option>
+                <option>The Old Man and the Sea — Ernest Hemingway</option>
+                <option>Rich Dad Poor Dad — Robert Kiyosaki</option>
+                <option>The Monk Who Sold His Ferrari — Robin Sharma</option>
+                <option>Who Moved My Cheese? — Dr. Spencer Johnson</option>
+                <option>The Business of the 21st Century — Robert Kiyosaki</option>
+                <option>My Experiments with Truth — Mahatma Gandhi</option>
+                <option>Five Point Someone — Chetan Bhagat</option>
+                <option>The Secret — Rhonda Byrne</option>
+                <option>The Power of Positive Thinking — Norman Vincent Peale</option>
+                <option>The Power of Your Subconscious Mind — Joseph Murphy</option>
+                <option>The 5 AM Club — Robin Sharma</option>
+                <option>Who Will Cry When You Die? — Robin Sharma</option>
+                <option>Discover Your Destiny — Robin Sharma</option>
+                <option>Wings of Fire — A.P.J. Abdul Kalam</option>
+                <option>I Have a Dream — Rashmi Bansal</option>
+                <option>The 5 Steps to Success — Yandamoori Veerendranath</option>
+                <option>You Are Born to Blossom — A.P.J. Abdul Kalam</option>
+                <option>Tiya: A Parrot's Journey Home — Samarpan</option>
+                <option>The God of Small Things — Arundhati Roy</option>
+                <option>How to Develop a 'Never Give Up' Attitude — Dr. Hardik Joshi</option>
+                <option>Three Thousand Stitches: Ordinary People, Extraordinary Lives — Sudha Murthy</option>
+                <option>Chanakya in Daily Life — Radhakrishnan Pillai</option>
+                <option>Siddhartha — Hermann Hesse</option>
+                <option>Kiss That Frog — Brian Tracy</option>
+                <option>Eat That Frog!: 21 Great Ways to Stop Procrastinating and Get More Done in Less Time — Brian Tracy</option>
+            </select>
+        </div>
+
+        <!-- NEW RESPONSE FIELD -->
+        <div class="form-group">
+            <label for="readingDate">Reading Date</label>
+
+            <input
+                type="date"
+                id="readingDate"
+                required
+            >
+        </div>
+
+        <button type="submit" class="save-btn" id="saveButton">
+            Add Student
+        </button>
+
+        <button
+            type="button"
+            class="clear-btn"
+            onclick="clearForm()"
+        >
+            Clear
+        </button>
+
+    </form>
+
+    <div id="message" class="message"></div>
+
+    <div class="search">
+        <label for="searchBox">Search Student</label>
+
+        <input
+            type="text"
+            id="searchBox"
+            placeholder="Search by name, enrollment, batch or book..."
+            oninput="displayStudents()"
+        >
+    </div>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Student Name</th>
+                    <th>Enrollment Number</th>
+                    <th>Batch</th>
+                    <th>Book Name</th>
+                    <th>Reading Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="studentTableBody"></tbody>
+
+        </table>
 
     </div>
 
-
-    <!-- BOOK DROPDOWN -->
-
-    <select id="book">
-
-        <option value="">
-            -- Select Book --
-        </option>
-
-        <option>1. You Can Win — Shiv Khera</option>
-
-        <option>
-            2. How to Win Friends and Influence People — Dale Carnegie
-        </option>
-
-        <option>
-            3. Getting Things Done: The Art of Stress Free Productivity — David Allen
-        </option>
-
-        <option>
-            4. Quiet: The Power of Introvert in the World They Can't Stop Talking — Susan Cain
-        </option>
-
-        <option>
-            5. The Alchemist — Paulo Coelho
-        </option>
-
-        <option>
-            6. The 7 Habits of Highly Effective People — Stephen Covey
-        </option>
-
-        <option>
-            7. What to Say When You Talk to Yourself — Dr. Shad Helmstetter
-        </option>
-
-        <option>
-            8. The Big Leap — Gay Hendricks
-        </option>
-
-        <option>
-            9. Thinking Fast and Slow — Daniel Kahneman
-        </option>
-
-        <option>
-            10. The Art of Thinking Clearly — Ralf Dobelli
-        </option>
-
-        <option>
-            11. Upside-Down King — Sudha Murthy
-        </option>
-
-        <option>
-            12. Born to Be Happy — Pramod Batra
-        </option>
-
-        <option>
-            13. Ikigai: The Japanese Secret to a Long and Happy Life — Héctor García & Francesc Miralles
-        </option>
-
-        <option>
-            14. Poor Little Rich Slum — Rashmi Bansal
-        </option>
-
-        <option>
-            15. Most and More — Mahatria Ra
-        </option>
-
-        <option>
-            16. The Old Man and the Sea — Ernest Hemingway
-        </option>
-
-        <option>
-            17. Rich Dad Poor Dad — Robert Kiyosaki
-        </option>
-
-        <option>
-            18. The Monk Who Sold His Ferrari — Robin Sharma
-        </option>
-
-        <option>
-            19. Who Moved My Cheese? — Dr. Spencer Johnson
-        </option>
-
-        <option>
-            20. The Business of the 21st Century — Robert Kiyosaki
-        </option>
-
-        <option>
-            21. My Experiments with Truth — Mahatma Gandhi
-        </option>
-
-        <option>
-            22. Five Point Someone — Chetan Bhagat
-        </option>
-
-        <option>
-            23. The Secret — Rhonda Byrne
-        </option>
-
-        <option>
-            24. The Power of Positive Thinking — Norman Vincent Peale
-        </option>
-
-        <option>
-            25. The Power of Your Subconscious Mind — Joseph Murphy
-        </option>
-
-        <option>
-            26. The 5 AM Club — Robin Sharma
-        </option>
-
-        <option>
-            27. Who Will Cry When You Die? — Robin Sharma
-        </option>
-
-        <option>
-            28. Discover Your Destiny — Robin Sharma
-        </option>
-
-        <option>
-            29. Wings of Fire — A.P.J. Abdul Kalam
-        </option>
-
-        <option>
-            30. I Have a Dream — Rashmi Bansal
-        </option>
-
-        <option>
-            31. The 5 Steps to Success — Yandamoori Veerendranath
-        </option>
-
-        <option>
-            32. You Are Born to Blossom — A.P.J. Abdul Kalam
-        </option>
-
-        <option>
-            33. Tiya: A Parrot's Journey Home — Samarpan
-        </option>
-
-        <option>
-            34. The God of Small Things — Arundhati Roy
-        </option>
-
-        <option>
-            35. How to Develop a 'Never Give Up' Attitude — Dr. Hardik Joshi
-        </option>
-
-        <option>
-            36. Three Thousand Stitches: Ordinary People, Extraordinary Lives — Sudha Murthy
-        </option>
-
-        <option>
-            37. Chanakya in Daily Life — Radhakrishnan Pillai
-        </option>
-
-        <option>
-            38. Siddhartha — Hermann Hesse
-        </option>
-
-        <option>
-            39. Kiss That Frog — Brian Tracy
-        </option>
-
-        <option>
-            40. Eat That Frog!: 21 Great Ways to Stop Procrastinating and Get More Done in Less Time — Brian Tracy
-        </option>
-
-    </select>
-
 </div>
-
-
-<!-- BUTTONS -->
-
-<div style="margin-top:15px;">
-
-    <button
-        class="add"
-        id="saveButton"
-        onclick="saveStudent()"
-    >
-        Add Student
-    </button>
-
-    <button
-        class="cancel"
-        id="cancelButton"
-        onclick="cancelEdit()"
-        style="display:none;"
-    >
-        Cancel
-    </button>
-
-</div>
-
-
-<!-- SUCCESS MESSAGE -->
-
-<div
-    id="message"
-    class="message"
-></div>
-
-
-<!-- SEARCH -->
-
-<input
-    class="search"
-    type="text"
-    id="search"
-    placeholder="Search student..."
-    oninput="showStudents()"
->
-
-
-<div>
-    <b id="count">
-        Total Students: 0
-    </b>
-</div>
-
-
-<!-- TABLE -->
-
-<div class="table-box">
-
-<table>
-
-<thead>
-<tr>
-    <th>No.</th>
-    <th>Student Name</th>
-    <th>Enrollment Number</th>
-    <th>Batch</th>
-    <th>Book Name</th>
-    <th>Action</th>
-</tr>
-</thead>
-
-<tbody id="studentTable"></tbody>
-
-</table>
-
-</div>
-
-</div>
-
 
 <script>
 
-/* =====================================
-   DATA
-===================================== */
+const STORAGE_KEY = "PCE_BOOK_DATA";
 
-let students =
-    JSON.parse(
-        localStorage.getItem("PCE_BOOK_DATA")
-    ) || [];
+let students = JSON.parse(
+    localStorage.getItem(STORAGE_KEY)
+) || [];
 
 let editingId = null;
 
 
-/* =====================================
-   SAVE DATA
-===================================== */
-
+/* SAVE DATA */
 function saveData() {
 
     localStorage.setItem(
-        "PCE_BOOK_DATA",
+        STORAGE_KEY,
         JSON.stringify(students)
     );
-
 }
 
 
-/* =====================================
-   ADD / UPDATE STUDENT
-===================================== */
+/* SORT BY ENROLLMENT NUMBER */
+function sortStudents() {
 
-function saveStudent() {
+    students.sort(function(a, b) {
+
+        const numA = parseInt(
+            String(a.enrollment).replace(/\D/g, "")
+        ) || 0;
+
+        const numB = parseInt(
+            String(b.enrollment).replace(/\D/g, "")
+        ) || 0;
+
+        return numA - numB;
+    });
+}
+
+
+/* ADD / UPDATE STUDENT */
+document.getElementById("studentForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
 
     const name =
-        document.getElementById("name")
-        .value
-        .trim();
+        document.getElementById("studentName")
+        .value.trim();
 
     const enrollment =
         document.getElementById("enrollment")
-        .value
-        .trim();
-
-    const book =
-        document.getElementById("book")
-        .value;
+        .value.trim();
 
     const batchElement =
         document.querySelector(
             'input[name="batch"]:checked'
         );
 
-    const batch =
-        batchElement
-        ? batchElement.value
-        : "";
+    const book =
+        document.getElementById("bookName")
+        .value;
+
+    const readingDate =
+        document.getElementById("readingDate")
+        .value;
 
 
-    /* CHECK INPUT */
+    if (!name || !enrollment || !batchElement || !book || !readingDate) {
 
-    if (!name) {
-        alert("Please enter student name.");
-        return;
-    }
-
-    if (!enrollment) {
-        alert("Please enter enrollment number.");
-        return;
-    }
-
-    if (!batch) {
-        alert("Please select Batch A or B.");
-        return;
-    }
-
-    if (!book) {
-        alert("Please select a book.");
-        return;
-    }
-
-
-    /* CHECK DUPLICATE */
-
-    const duplicate =
-        students.find(function(student) {
-
-            return (
-                student.enrollment === enrollment &&
-                student.id !== editingId
-            );
-
-        });
-
-
-    if (duplicate) {
-
-        alert(
-            "This enrollment number already exists."
+        showMessage(
+            "Please fill all fields.",
+            "red"
         );
 
         return;
     }
 
 
-    /* UPDATE */
+    const batch = batchElement.value;
 
+
+    /* CHECK DUPLICATE ENROLLMENT */
+    const duplicate = students.find(function(student) {
+
+        return (
+            student.enrollment.toLowerCase() ===
+            enrollment.toLowerCase()
+            &&
+            student.id !== editingId
+        );
+
+    });
+
+
+    if (duplicate) {
+
+        showMessage(
+            "This enrollment number already exists.",
+            "red"
+        );
+
+        return;
+    }
+
+
+    /* UPDATE EXISTING STUDENT */
     if (editingId !== null) {
 
-        const student =
-            students.find(
-                s => s.id === editingId
-            );
+        const student = students.find(
+            s => s.id === editingId
+        );
 
         if (student) {
 
@@ -572,24 +429,22 @@ function saveStudent() {
             student.enrollment = enrollment;
             student.batch = batch;
             student.book = book;
-
+            student.readingDate = readingDate;
         }
+
+        showMessage(
+            "Student details updated successfully.",
+            "green"
+        );
 
         editingId = null;
 
-        document.getElementById(
-            "saveButton"
-        ).textContent = "Add Student";
-
-        document.getElementById(
-            "cancelButton"
-        ).style.display = "none";
+        document.getElementById("saveButton")
+        .textContent = "Add Student";
 
     }
 
-
-    /* NEW STUDENT */
-
+    /* ADD NEW STUDENT */
     else {
 
         students.push({
@@ -602,186 +457,138 @@ function saveStudent() {
 
             batch: batch,
 
-            book: book
+            book: book,
 
+            readingDate: readingDate
         });
 
+        showMessage(
+            "Student added successfully.",
+            "green"
+        );
     }
 
 
-    /* SAVE */
+    sortStudents();
 
     saveData();
 
+    displayStudents();
 
-    /* CLEAR */
+    clearForm(false);
 
-    clearForm();
-
-
-    /* DISPLAY */
-
-    showStudents();
+});
 
 
-    showMessage(
-        "Student details saved successfully!"
-    );
+/* DISPLAY STUDENTS */
+function displayStudents() {
 
-}
-
-
-/* =====================================
-   SORT
-===================================== */
-
-function sortStudents() {
-
-    students.sort(function(a, b) {
-
-        const aNum =
-            parseInt(
-                a.enrollment.replace(/\D/g, ""),
-                10
-            );
-
-        const bNum =
-            parseInt(
-                b.enrollment.replace(/\D/g, ""),
-                10
-            );
-
-
-        if (
-            !isNaN(aNum) &&
-            !isNaN(bNum)
-        ) {
-
-            return aNum - bNum;
-
-        }
-
-
-        return a.enrollment.localeCompare(
-            b.enrollment,
-            undefined,
-            {
-                numeric: true
-            }
-        );
-
-    });
-
-}
-
-
-/* =====================================
-   DISPLAY
-===================================== */
-
-function showStudents() {
-
-    sortStudents();
-
-
-    const table =
-        document.getElementById(
-            "studentTable"
-        );
+    const tbody =
+        document.getElementById("studentTableBody");
 
     const search =
-        document.getElementById(
-            "search"
-        )
+        document.getElementById("searchBox")
         .value
         .toLowerCase()
         .trim();
 
 
-    table.innerHTML = "";
+    const filteredStudents =
+        students.filter(function(student) {
+
+            return (
+
+                student.name.toLowerCase()
+                .includes(search)
+
+                ||
+
+                student.enrollment.toLowerCase()
+                .includes(search)
+
+                ||
+
+                student.batch.toLowerCase()
+                .includes(search)
+
+                ||
+
+                student.book.toLowerCase()
+                .includes(search)
+
+                ||
+
+                student.readingDate
+                .toLowerCase()
+                .includes(search)
+
+            );
+
+        });
 
 
-    let number = 1;
+    if (filteredStudents.length === 0) {
+
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="7" class="empty">
+                    No student records found.
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
 
 
-    students.forEach(function(student) {
-
-        const text =
-            (
-                student.name +
-                " " +
-                student.enrollment +
-                " " +
-                student.batch +
-                " " +
-                student.book
-            ).toLowerCase();
+    tbody.innerHTML = "";
 
 
-        if (!text.includes(search)) {
-            return;
-        }
+    filteredStudents.forEach(function(student, index) {
 
-
-        const row =
-            document.createElement("tr");
-
+        const row = document.createElement("tr");
 
         row.innerHTML = `
 
-            <td>${number++}</td>
+            <td>${index + 1}</td>
 
             <td>${escapeHTML(student.name)}</td>
 
             <td>${escapeHTML(student.enrollment)}</td>
 
-            <td>${student.batch}</td>
+            <td>Batch ${escapeHTML(student.batch)}</td>
 
             <td>${escapeHTML(student.book)}</td>
 
+            <td>${escapeHTML(student.readingDate)}</td>
+
             <td>
 
-                <div class="actions">
+                <button
+                    class="edit-btn"
+                    onclick="editStudent(${student.id})"
+                >
+                    Edit
+                </button>
 
-                    <button
-                        class="edit"
-                        onclick="editStudent(${student.id})"
-                    >
-                        Edit
-                    </button>
-
-                    <button
-                        class="delete"
-                        onclick="deleteStudent(${student.id})"
-                    >
-                        Delete
-                    </button>
-
-                </div>
+                <button
+                    class="delete-btn"
+                    onclick="deleteStudent(${student.id})"
+                >
+                    Delete
+                </button>
 
             </td>
-
         `;
 
-
-        table.appendChild(row);
+        tbody.appendChild(row);
 
     });
-
-
-    document.getElementById(
-        "count"
-    ).textContent =
-        "Total Students: " +
-        students.length;
 
 }
 
 
-/* =====================================
-   EDIT
-===================================== */
-
+/* EDIT STUDENT */
 function editStudent(id) {
 
     const student =
@@ -789,50 +596,40 @@ function editStudent(id) {
             s => s.id === id
         );
 
+    if (!student) return;
 
-    if (!student) {
-        return;
+
+    document.getElementById("studentName")
+    .value = student.name;
+
+
+    document.getElementById("enrollment")
+    .value = student.enrollment;
+
+
+    const batchRadio =
+        document.querySelector(
+            `input[name="batch"][value="${student.batch}"]`
+        );
+
+    if (batchRadio) {
+        batchRadio.checked = true;
     }
+
+
+    document.getElementById("bookName")
+    .value = student.book;
+
+
+    document.getElementById("readingDate")
+    .value = student.readingDate;
 
 
     editingId = id;
 
 
-    document.getElementById(
-        "name"
-    ).value = student.name;
-
-
-    document.getElementById(
-        "enrollment"
-    ).value = student.enrollment;
-
-
-    document.getElementById(
-        "book"
-    ).value = student.book;
-
-
-    document
-        .querySelectorAll(
-            'input[name="batch"]'
-        )
-        .forEach(function(radio) {
-
-            radio.checked =
-                radio.value === student.batch;
-
-        });
-
-
-    document.getElementById(
-        "saveButton"
-    ).textContent = "Update Student";
-
-
-    document.getElementById(
-        "cancelButton"
-    ).style.display = "inline-block";
+    document.getElementById("saveButton")
+    .textContent = "Update Student";
 
 
     window.scrollTo({
@@ -840,13 +637,15 @@ function editStudent(id) {
         behavior: "smooth"
     });
 
+
+    showMessage(
+        "You are editing this student's details.",
+        "blue"
+    );
 }
 
 
-/* =====================================
-   DELETE
-===================================== */
-
+/* DELETE STUDENT */
 function deleteStudent(id) {
 
     const student =
@@ -854,138 +653,99 @@ function deleteStudent(id) {
             s => s.id === id
         );
 
-
-    if (!student) {
-        return;
-    }
+    if (!student) return;
 
 
-    if (
+    const confirmed =
         confirm(
-            "Delete " +
-            student.name +
-            "'s record?"
-        )
-    ) {
-
-        students =
-            students.filter(
-                s => s.id !== id
-            );
-
-
-        saveData();
-
-        showStudents();
-
-        showMessage(
-            "Student record deleted."
+            "Delete this student's record?"
         );
 
-    }
 
+    if (!confirmed) return;
+
+
+    students =
+        students.filter(
+            s => s.id !== id
+        );
+
+
+    saveData();
+
+    displayStudents();
+
+
+    showMessage(
+        "Student deleted.",
+        "green"
+    );
 }
 
 
-/* =====================================
-   CANCEL EDIT
-===================================== */
+/* CLEAR FORM */
+function clearForm(showMsg = true) {
 
-function cancelEdit() {
+    document.getElementById("studentForm")
+    .reset();
 
     editingId = null;
 
-    clearForm();
 
-    document.getElementById(
-        "saveButton"
-    ).textContent = "Add Student";
+    document.getElementById("saveButton")
+    .textContent = "Add Student";
 
-    document.getElementById(
-        "cancelButton"
-    ).style.display = "none";
 
+    if (showMsg) {
+
+        showMessage(
+            "Form cleared.",
+            "blue"
+        );
+    }
 }
 
 
-/* =====================================
-   CLEAR FORM
-===================================== */
-
-function clearForm() {
-
-    document.getElementById(
-        "name"
-    ).value = "";
-
-    document.getElementById(
-        "enrollment"
-    ).value = "";
-
-    document.getElementById(
-        "book"
-    ).value = "";
-
-
-    document
-        .querySelectorAll(
-            'input[name="batch"]'
-        )
-        .forEach(function(radio) {
-
-            radio.checked = false;
-
-        });
-
-}
-
-
-/* =====================================
-   MESSAGE
-===================================== */
-
-function showMessage(text) {
+/* MESSAGE */
+function showMessage(text, color) {
 
     const message =
-        document.getElementById(
-            "message"
-        );
+        document.getElementById("message");
 
     message.textContent = text;
 
-    message.style.display = "block";
+    message.style.color = color;
 
 
     setTimeout(function() {
 
-        message.style.display = "none";
+        message.textContent = "";
 
-    }, 2500);
-
+    }, 3000);
 }
 
 
-/* =====================================
-   SECURITY
-===================================== */
+/* SECURITY: ESCAPE HTML */
+function escapeHTML(value) {
 
-function escapeHTML(text) {
+    return String(value)
 
-    const div =
-        document.createElement("div");
+        .replace(/&/g, "&amp;")
 
-    div.textContent = text;
+        .replace(/</g, "&lt;")
 
-    return div.innerHTML;
+        .replace(/>/g, "&gt;")
 
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
 }
 
 
-/* =====================================
-   START
-===================================== */
+/* INITIAL DISPLAY */
+sortStudents();
 
-showStudents();
+displayStudents();
 
 </script>
 
